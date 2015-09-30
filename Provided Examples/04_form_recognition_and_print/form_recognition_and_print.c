@@ -21,7 +21,7 @@
 #define RIGHT 0x06
 #define BACK 0x0A
 
-// USed to initialize the motors
+// Used to initialize the motors
 void InitPobProto (void)
 {
 	PobProto	Proto; // struct to set the pob-proto
@@ -58,6 +58,7 @@ int main (void)
 	InitI2C(I2C_100_KHZ);
 	InitCameraPobeye2();
 	InitLCD();	
+
 
 	InitPobProto();
 	SwitchOnAllServo();
