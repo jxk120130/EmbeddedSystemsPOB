@@ -25,10 +25,6 @@
 void InitPobProto (void)
 {
 	PobProto	Proto; // struct to set the pob-proto
-	
-	Proto.porta=ALL_PORTA_AS_ANA;	//to get the position of the analogic joystick, you have to set the PORTA as analogic input
-	Proto.portc=RC7_AS_DO| RC6_AS_DO |RC3_AS_DO |RC2_AS_SERVO|RC1_AS_SERVO |RC0_AS_SERVO;	//all pin of PORTC are configured to manage servomotors
-	Proto.portd=RD7_AS_DI	| RD6_AS_DI	|RD5_AS_DI |RD4_AS_DI|RD3_AS_DO	|RD2_AS_DO	|RD1_AS_DO	|RD0_AS_DO;		//RD0 RD1 RD2 RD3 are configured as digitals output to gear DC motor, RD4 RD5 RD6 RD7 are configured as digitals input
 	SetPobProto(&Proto);	//set the pob proto
 }
 
@@ -58,8 +54,6 @@ int main (void)
 	InitI2C(I2C_100_KHZ);
 	InitCameraPobeye2();
 	InitLCD();	
-
-
 	InitPobProto();
 	SwitchOnAllServo();
 	
@@ -81,56 +75,57 @@ int main (void)
 		BinaryRGBFrame(FrameFromCam); 
 		
 		// Try to identify the forms and make a list of it
-		Nb_Identify=IdentifyForm(FrameFromCam,ListOfForm,pattern);	
+		Nb_Identify = IdentifyForm(FrameFromCam,ListOfForm,pattern);	
 
 		// Parse the list of the form and print result on the Pob-Terminal and the LCD Screen
 		for (i=0;i<Nb_Identify;i++)
 		{
 			switch (ListOfForm[i].id)
 			{
-			case IDP_0_CROSS:
-				// Draw bitmap on the buffer and the LCD screen
-				DrawBitmap(0,0,IDB_CROSS,bitmap,&ScreenBuffer);
-				DrawLCD(&ScreenBuffer);
-				MoveBot(RUN);
-			break;
+				case IDP_0_CROSS:
+					// Draw bitmap on the buffer and the LCD screen
+					DrawBitmap(0,0,IDB_CROSS,bitmap,&ScreenBuffer);
+					DrawLCD(&ScreenBuffer);
+					MoveBot(RUN);
+				break;
+					
+	//			case IDP_1_BIGA:
+	//				DrawBitmap(0,0,IDB_BIGA,bitmap,&ScreenBuffer);
+	//				DrawLCD(&ScreenBuffer);
+	//			break;
+	
+				case IDP_2_KING:
+					DrawBitmap(0,0,IDB_KING,bitmap,&ScreenBuffer);
+					DrawLCD(&ScreenBuffer);
+					MoveBot(LEFT);
+				break;
+	
+	//			case IDP_3_TOWER:
+	//				DrawBitmap(0,0,IDB_TOWER,bitmap,&ScreenBuffer);
+	//				DrawLCD(&ScreenBuffer);
+	//			break;
 				
-//			case IDP_1_BIGA:
-//				DrawBitmap(0,0,IDB_BIGA,bitmap,&ScreenBuffer);
-//				DrawLCD(&ScreenBuffer);
-//			break;
-
-			case IDP_2_KING:
-				DrawBitmap(0,0,IDB_KING,bitmap,&ScreenBuffer);
-				DrawLCD(&ScreenBuffer);
-				MoveBot(LEFT);
-			break;
-
-//			case IDP_3_TOWER:
-//				DrawBitmap(0,0,IDB_TOWER,bitmap,&ScreenBuffer);
-//				DrawLCD(&ScreenBuffer);
-//			break;
-			
-//			case IDP_4_TREFLE:
-//				DrawBitmap(0,0,IDB_BIGA,bitmap,&ScreenBuffer);
-//				DrawLCD(&ScreenBuffer);
-//			break;
-			
-//			case IDP_5_TRIANGLE:
-//				DrawBitmap(0,0,IDB_TRIANGLE,bitmap,&ScreenBuffer);
-//				DrawLCD(&ScreenBuffer);
-//			break;
-			
-			default:
-				MoveBot(STOP);
-			break;
-			
+	//			case IDP_4_TREFLE:
+	//				DrawBitmap(0,0,IDB_BIGA,bitmap,&ScreenBuffer);
+	//				DrawLCD(&ScreenBuffer);
+	//			break;
+				
+	//			case IDP_5_TRIANGLE:
+	//				DrawBitmap(0,0,IDB_TRIANGLE,bitmap,&ScreenBuffer);
+	//				DrawLCD(&ScreenBuffer);
+	//			break;
+				
+				default:
+					MoveBot(STOP);
+				break;
 			}				
 		}		
-	if (Nb_Identify == 0)
+		
+		if (Nb_Identify == 0)
 		{
-		DrawBitmap(0,0,IDB_NOFORMS,bitmap,&ScreenBuffer);
-		DrawLCD(&ScreenBuffer);
+			DrawBitmap(0,0,IDB_NOFORMS,bitmap,&ScreenBuffer);
+			DrawLCD(&ScreenBuffer);
+			MoveBot(STOP);
 		}
 	}
 	return 0;
