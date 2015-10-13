@@ -1,13 +1,3 @@
-/** \anchor form0
- *
- * @brief Form recognition. 
- *
- * @file
-
- Example of form recognition and print the result on UART and the LCD Screen.
-
- * @author Foucault Alisson
- */
 
 #include <pob-eye.h>
 
@@ -38,6 +28,26 @@ void MoveBot(UInt8 Way)
 {
 	SetPortD(Way);
 }
+
+void turnRight(){
+	MoveBot(RIGHT);
+	WaitUs(3100000);
+	MoveBot(STOP);
+}
+
+void turnLeft(){
+	MoveBot(LEFT);
+	WaitUs(3800000);
+	MoveBot(STOP);
+}
+
+void runForward(int inches){
+	int time = 237500 * inches;
+	MoveBot(RUN);
+	WaitUs(time);
+	MoveBot(STOP);
+}
+
 
 int main (void)
 {	
@@ -72,7 +82,15 @@ int main (void)
 	// clear the graphic buffer
 	ClearGraphicBuffer(&ScreenBuffer);
 
-	while(1)
+	runForward(18);
+	turnLeft();
+	runForward(36);
+	turnRight();
+	//SIGNAL HERE
+	runForward(24);
+	//end
+
+	/*while(1)
 	{		
 		// grab the RGB components
 		GrabRGBFrame();				
@@ -95,10 +113,10 @@ int main (void)
 				MoveBot(RUN);
 			break;
 				
-//			case IDP_1_BIGA:
-//				DrawBitmap(0,0,IDB_BIGA,bitmap,&ScreenBuffer);
-//				DrawLCD(&ScreenBuffer);
-//			break;
+			case IDP_1_BIGA:
+				DrawBitmap(0,0,IDB_BIGA,bitmap,&ScreenBuffer);
+				DrawLCD(&ScreenBuffer);
+			break;
 
 			case IDP_2_KING:
 				DrawBitmap(0,0,IDB_KING,bitmap,&ScreenBuffer);
@@ -106,33 +124,35 @@ int main (void)
 				MoveBot(LEFT);
 			break;
 
-//			case IDP_3_TOWER:
-//				DrawBitmap(0,0,IDB_TOWER,bitmap,&ScreenBuffer);
-//				DrawLCD(&ScreenBuffer);
-//			break;
+			case IDP_3_TOWER:
+				DrawBitmap(0,0,IDB_TOWER,bitmap,&ScreenBuffer);
+				DrawLCD(&ScreenBuffer);
+			break;
 			
-//			case IDP_4_TREFLE:
-//				DrawBitmap(0,0,IDB_BIGA,bitmap,&ScreenBuffer);
-//				DrawLCD(&ScreenBuffer);
-//			break;
+			case IDP_4_TREFLE:
+				DrawBitmap(0,0,IDB_BIGA,bitmap,&ScreenBuffer);
+				DrawLCD(&ScreenBuffer);
+			break;
 			
-//			case IDP_5_TRIANGLE:
-//				DrawBitmap(0,0,IDB_TRIANGLE,bitmap,&ScreenBuffer);
-//				DrawLCD(&ScreenBuffer);
-//			break;
+			case IDP_5_TRIANGLE:
+				DrawBitmap(0,0,IDB_TRIANGLE,bitmap,&ScreenBuffer);
+				DrawLCD(&ScreenBuffer);
+			break;
 			
 			default:
 				MoveBot(STOP);
 			break;
 			
 			}				
-		}		
+		}
+		
 	if (Nb_Identify == 0)
 		{
 		DrawBitmap(0,0,IDB_NOFORMS,bitmap,&ScreenBuffer);
 		DrawLCD(&ScreenBuffer);
 		}
 	}
+	*/
 	return 0;
 }
 
