@@ -36,8 +36,7 @@ void MoveBot(UInt8 Way)
 
 int main (void)
 {	
-	UInt8 i=0,Nb_Identify = 0, Nb_Last = 0;
-	
+	UInt8 i=0,Nb_Identify = 0, Nb_Last = 0; 
 	// List of form
 	Form ListOfForm[MAX_OF_FORM];
 
@@ -66,7 +65,7 @@ int main (void)
 	ClearGraphicBuffer(&ScreenBuffer);
 
 	while(1)
-	{		
+	{
 		// grab the RGB components
 		GrabRGBFrame();				
 		
@@ -76,10 +75,10 @@ int main (void)
 		// Try to identify the forms and make a list of it
 		Nb_Identify = IdentifyForm(FrameFromCam,ListOfForm,pattern);	
 
+	
 		// Parse the list of the form and print result on the Pob-Terminal and the LCD Screen
 		for (i=0;i<Nb_Identify;i++)
 		{
-			sleep(1);
 			switch (ListOfForm[i].id)
 			{
 				case IDP_6_CIRCLE:
@@ -87,7 +86,7 @@ int main (void)
 					DrawBitmap(0,0,IDB_KING,bitmap,&ScreenBuffer);
 					DrawLCD(&ScreenBuffer);
 					MoveBot(RUN);
-					// 	Nb_Last = RUN;
+					// Nb_Last = RUN;
 				break;
 
 				case IDP_0_CROSS:
@@ -96,6 +95,12 @@ int main (void)
 					MoveBot(LEFT);
 					Nb_Last = LEFT;
 				break;
+				
+				case IDP_1_BIGA:
+					DrawBitmap(0,0,IDB_BIGA,bitmap,&ScreenBuffer);
+					DrawLCD(&ScreenBuffer);
+					MoveBot(RUN);
+				break;				
 				
 				case IDP_5_TRIANGLE:
 					DrawBitmap(0,0,IDB_TRIANGLE,bitmap,&ScreenBuffer);
@@ -115,10 +120,8 @@ int main (void)
 			DrawLCD(&ScreenBuffer);
 			MoveBot(Nb_Last);
 		}
-		
-		
 	}
-	return 0;
 
+	return 0;
 }
 
