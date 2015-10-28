@@ -14,6 +14,8 @@ C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
                               ./form_recognition_and_print.o (InitGraphicBuffer)
 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
                               ./form_recognition_and_print.o (DrawLCD)
+C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
+                              ./form_recognition_and_print.o (SetDCMotor)
 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
                               C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(cam_pobeye2.o) (WaitMs)
 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
@@ -127,254 +129,269 @@ startup         0x00000000       0x48
  *(.startup)
  .startup       0x00000000       0x48 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\boot.o
 
-prog            0x00000048     0x8a34
+prog            0x00000048     0x8d28
  *(.text)
- .text          0x00000048      0x1f0 ./form_recognition_and_print.o
+ .text          0x00000048      0x220 ./form_recognition_and_print.o
                 0x00000048                MoveBot
                 0x0000005c                InitPobProto
                 0x00000078                main
- .text          0x00000238       0xb8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\boot.o
-                0x00000238                start
-                0x000002d4                endless_loop
- .text          0x000002f0      0x110 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(init.o)
-                0x000003f0                intr_swi
-                0x0000030c                InitPobeye2
-                0x000003ec                intr_undefined
-                0x000003fc                intr_fiq
-                0x000003f8                intr_dabort
-                0x000003f4                intr_pabort
- .text          0x00000400      0x29c C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(i2c.o)
-                0x000005e0                WriteOnI2C
-                0x00000400                InitI2C
-                0x00000538                ReadOnI2C
-                0x0000061c                WriteBufferOnI2C
-                0x00000670                StopI2C
-                0x00000578                ReadOnI2CWithAck
-                0x00000464                SendSlaveAddress
- .text          0x0000069c      0x5b8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(cam_pobeye2.o)
-                0x0000094c                SetCameraParameter
-                0x0000082c                GrabRGBFrame
-                0x000006a8                InitCameraPobeye2ForCubot
-                0x0000097c                QvgaRaw
-                0x00000bd4                InitCameraPobeye2
-                0x0000069c                GetRGBFrame
-                0x00000714                GrabFullRGBFrame
- .text          0x00000c54     0x1288 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(visio.o)
-                0x00000d14                GetHSLFrame
-                0x00000c54                BinaryRGBFrame
-                0x0000194c                TestPattern
-                0x0000117c                CutForm
-                0x00001d48                IdentifyForm
-                0x00001048                Square
-                0x00000e60                GetHSVFrame
-                0x000016e0                FindFormWithCadrige
-                0x00001000                GrayAPixel
-                0x0000178c                DrawVec
-                0x00000f94                GrayRGBFrame
- .text          0x00001edc      0x91c C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
-                0x00002760                GetPinPortA
-                0x00002340                GetPinPortC
-                0x00002130                SetPortD
-                0x00002748                SetPinPortA
-                0x00001edc                SendToSapien
-                0x00002158                SetPortA
-                0x00002730                ClearPinPortA
-                0x0000204c                SetServoMotorFull
-                0x00002180                SetPortDAsServo
-                0x000024e8                ClearPinPortD
-                0x0000265c                GetPortA
-                0x00002108                SetPortC
-                0x00002518                GetPinPortD
-                0x00001f50                SwitchOffOneServoFull
-                0x000020b0                SetServoMotor
-                0x00002328                SetPinPortC
-                0x00002034                SwitchOffAllServo
-                0x00001fdc                SwitchOffOneServo
-                0x00002500                SetPinPortD
-                0x00001f04                SwitchOnOneServoFull
-                0x00002310                ClearPinPortC
-                0x00002198                SetPobProto
-                0x00002230                GetPortC
-                0x00002200                SendEcho
-                0x000025d8                GetPortAnalog
-                0x00001f9c                SwitchOnOneServo
-                0x000023e0                GetPortD
-                0x0000201c                SwitchOnAllServo
- .text          0x000027f8      0x8b8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
-                0x000027f8                InitGraphicBuffer
-                0x00002c30                DrawBitmap
-                0x00002858                PlotAPoint
-                0x00002810                ClearGraphicBuffer
-                0x00002958                DrawLine
-                0x00002b14                GetBitmapWidth
-                0x00002ba4                GetBitmapHeight
-                0x000028c8                DrawComponentInABufferVideo
- .text          0x000030b0      0x814 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
-                0x0000311c                SetPageXYZ
-                0x00003154                SetLCDIO
-                0x000030b0                SetData
-                0x000030f0                TicTac
-                0x00003178                DrawLCD
-                0x00003888                InitLCD
-                0x00003540                DrawRightLCD
-                0x000036e8                DrawLeftLCD
- .text          0x000038c4      0x1ec C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
-                0x00003a60                WaitMs
-                0x000038c4                SetLed
-                0x000039e4                Wait_4Us
-                0x000038f4                Bin2Dec
-                0x000038dc                ClearLed
-                0x00003a48                Wait_100Us
-                0x00003a78                SendString
-                0x000039b4                Bin2Hex
- .text          0x00003ab0      0x214 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
-                0x00003b5c                ClrOutput
-                0x00003ba8                ReadByte
-                0x00003afc                GetInput
-                0x00003b2c                SetOutput
-                0x00003c38                WriteByte
-                0x00003ab0                SetIOWay
-                0x00003b8c                ClrAndSetOuput
- .text          0x00003cc4      0x1d8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
-                0x00003cc4                WaitUs
-                0x00003d18                StartClock
-                0x00003e04                Timer0AttachFunction
-                0x00003dcc                StopTimer0
-                0x00003d80                Timer0IrqHandler
-                0x00003e14                Timer0DetachFunction
-                0x00003e28                InitTimer0
-                0x00003d5c                GetClock
-                0x00003ddc                IsTimer0Overflow
-                0x00003d6c                StopClock
- .text          0x00003e9c       0x3c C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
-                0x00003ebc                restoreIRQ
-                0x00003e9c                enableIRQ
-                0x00003eac                disableIRQ
- .text          0x00003ed8      0x568 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
-                0x00004244                InitUART0
-                0x00003fbc                SetUART0Configuration
-                0x000043dc                InitUART0Intr
-                0x000042bc                FlushUART0
-                0x000042f4                SendByteToUART0
-                0x00003ed8                Uart0IrqHandler
-                0x000042d4                IsUART0Empty
-                0x00004354                GetByteFromUART0
-                0x000043a4                GetBufferFromUART0
-                0x00004378                GetByteFromUART0NoWait
-                0x0000431c                SendBufferToUART0
-                0x00003f5c                GetByteFromUART0Intr
- .text          0x00004440      0x114 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_udivsi3.o)
-                0x00004440                __udivsi3
-                0x00004440                __aeabi_uidiv
-                0x0000453c                __aeabi_uidivmod
- .text          0x00004554      0x144 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_divsi3.o)
-                0x00004554                __aeabi_idiv
-                0x00004554                __divsi3
-                0x00004680                __aeabi_idivmod
- .text          0x00004698        0x4 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_dvmd_tls.o)
-                0x00004698                __aeabi_ldiv0
-                0x00004698                __div0
-                0x00004698                __aeabi_idiv0
- .text          0x0000469c      0x430 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubdf3.o)
-                0x00004a60                __floatdidf
-                0x000049e0                __floatsidf
-                0x000049b8                __aeabi_ui2d
-                0x0000469c                __aeabi_drsub
-                0x00004a0c                __extendsfdf2
-                0x000046a8                __adddf3
-                0x000049b8                __floatunsidf
-                0x000046a8                __aeabi_dadd
-                0x00004a4c                __aeabi_ul2d
-                0x000046a4                __aeabi_dsub
-                0x00004a4c                __floatundidf
-                0x000049e0                __aeabi_i2d
-                0x00004a60                __aeabi_l2d
-                0x00004a0c                __aeabi_f2d
-                0x000046a4                __subdf3
- .text          0x00004acc      0x49c c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivdf3.o)
-                0x00004d5c                __aeabi_ddiv
-                0x00004acc                __aeabi_dmul
-                0x00004d5c                __divdf3
-                0x00004acc                __muldf3
- .text          0x00004f68       0xa0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_truncdfsf2.o)
-                0x00004f68                __aeabi_d2f
-                0x00004f68                __truncdfsf2
- .text          0x00005008      0x2ac c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubsf3.o)
-                0x00005014                __aeabi_fadd
-                0x00005010                __subsf3
-                0x000051d8                __aeabi_i2f
-                0x00005010                __aeabi_fsub
-                0x00005208                __floatdisf
-                0x000051d8                __floatsisf
-                0x000051f8                __floatundisf
-                0x000051d0                __aeabi_ui2f
-                0x00005208                __aeabi_l2f
-                0x000051f8                __aeabi_ul2f
-                0x00005008                __aeabi_frsub
-                0x000051d0                __floatunsisf
-                0x00005014                __addsf3
- .text          0x000052b4      0x2f8 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivsf3.o)
-                0x0000544c                __divsf3
-                0x0000544c                __aeabi_fdiv
-                0x000052b4                __mulsf3
-                0x000052b4                __aeabi_fmul
- .text          0x000055ac       0x54 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_fixunssfsi.o)
-                0x000055ac                __aeabi_f2uiz
-                0x000055ac                __fixunssfsi
+ .text          0x00000268       0xb8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\boot.o
+                0x00000268                start
+                0x00000304                endless_loop
+ .text          0x00000320      0x110 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(init.o)
+                0x00000420                intr_swi
+                0x0000033c                InitPobeye2
+                0x0000041c                intr_undefined
+                0x0000042c                intr_fiq
+                0x00000428                intr_dabort
+                0x00000424                intr_pabort
+ .text          0x00000430      0x29c C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(i2c.o)
+                0x00000610                WriteOnI2C
+                0x00000430                InitI2C
+                0x00000568                ReadOnI2C
+                0x0000064c                WriteBufferOnI2C
+                0x000006a0                StopI2C
+                0x000005a8                ReadOnI2CWithAck
+                0x00000494                SendSlaveAddress
+ .text          0x000006cc      0x5b8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(cam_pobeye2.o)
+                0x0000097c                SetCameraParameter
+                0x0000085c                GrabRGBFrame
+                0x000006d8                InitCameraPobeye2ForCubot
+                0x000009ac                QvgaRaw
+                0x00000c04                InitCameraPobeye2
+                0x000006cc                GetRGBFrame
+                0x00000744                GrabFullRGBFrame
+ .text          0x00000c84     0x1288 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(visio.o)
+                0x00000d44                GetHSLFrame
+                0x00000c84                BinaryRGBFrame
+                0x0000197c                TestPattern
+                0x000011ac                CutForm
+                0x00001d78                IdentifyForm
+                0x00001078                Square
+                0x00000e90                GetHSVFrame
+                0x00001710                FindFormWithCadrige
+                0x00001030                GrayAPixel
+                0x000017bc                DrawVec
+                0x00000fc4                GrayRGBFrame
+ .text          0x00001f0c      0x91c C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
+                0x00002790                GetPinPortA
+                0x00002370                GetPinPortC
+                0x00002160                SetPortD
+                0x00002778                SetPinPortA
+                0x00001f0c                SendToSapien
+                0x00002188                SetPortA
+                0x00002760                ClearPinPortA
+                0x0000207c                SetServoMotorFull
+                0x000021b0                SetPortDAsServo
+                0x00002518                ClearPinPortD
+                0x0000268c                GetPortA
+                0x00002138                SetPortC
+                0x00002548                GetPinPortD
+                0x00001f80                SwitchOffOneServoFull
+                0x000020e0                SetServoMotor
+                0x00002358                SetPinPortC
+                0x00002064                SwitchOffAllServo
+                0x0000200c                SwitchOffOneServo
+                0x00002530                SetPinPortD
+                0x00001f34                SwitchOnOneServoFull
+                0x00002340                ClearPinPortC
+                0x000021c8                SetPobProto
+                0x00002260                GetPortC
+                0x00002230                SendEcho
+                0x00002608                GetPortAnalog
+                0x00001fcc                SwitchOnOneServo
+                0x00002410                GetPortD
+                0x0000204c                SwitchOnAllServo
+ .text          0x00002828      0x8b8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
+                0x00002828                InitGraphicBuffer
+                0x00002c60                DrawBitmap
+                0x00002888                PlotAPoint
+                0x00002840                ClearGraphicBuffer
+                0x00002988                DrawLine
+                0x00002b44                GetBitmapWidth
+                0x00002bd4                GetBitmapHeight
+                0x000028f8                DrawComponentInABufferVideo
+ .text          0x000030e0      0x814 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
+                0x0000314c                SetPageXYZ
+                0x00003184                SetLCDIO
+                0x000030e0                SetData
+                0x00003120                TicTac
+                0x000031a8                DrawLCD
+                0x000038b8                InitLCD
+                0x00003570                DrawRightLCD
+                0x00003718                DrawLeftLCD
+ .text          0x000038f4      0x2c4 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
+                0x00003a0c                SetPwm
+                0x00003964                SetDualIOWay
+                0x000038f4                ClearDualOutput
+                0x000039bc                SetDCSpeed
+                0x00003a58                SetAX12Id
+                0x00003b88                GetEchoFromDual
+                0x00003ae8                GetDualInput
+                0x00003b58                PingAX12Servo
+                0x00003a80                SetAX12Servo
+                0x00003b28                GetAnalog
+                0x000039e4                SetDCMotor
+                0x0000392c                SetDualOutput
+ .text          0x00003bb8      0x1ec C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
+                0x00003d54                WaitMs
+                0x00003bb8                SetLed
+                0x00003cd8                Wait_4Us
+                0x00003be8                Bin2Dec
+                0x00003bd0                ClearLed
+                0x00003d3c                Wait_100Us
+                0x00003d6c                SendString
+                0x00003ca8                Bin2Hex
+ .text          0x00003da4      0x214 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
+                0x00003e50                ClrOutput
+                0x00003e9c                ReadByte
+                0x00003df0                GetInput
+                0x00003e20                SetOutput
+                0x00003f2c                WriteByte
+                0x00003da4                SetIOWay
+                0x00003e80                ClrAndSetOuput
+ .text          0x00003fb8      0x1d8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
+                0x00003fb8                WaitUs
+                0x0000400c                StartClock
+                0x000040f8                Timer0AttachFunction
+                0x000040c0                StopTimer0
+                0x00004074                Timer0IrqHandler
+                0x00004108                Timer0DetachFunction
+                0x0000411c                InitTimer0
+                0x00004050                GetClock
+                0x000040d0                IsTimer0Overflow
+                0x00004060                StopClock
+ .text          0x00004190       0x3c C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
+                0x000041b0                restoreIRQ
+                0x00004190                enableIRQ
+                0x000041a0                disableIRQ
+ .text          0x000041cc      0x568 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
+                0x00004538                InitUART0
+                0x000042b0                SetUART0Configuration
+                0x000046d0                InitUART0Intr
+                0x000045b0                FlushUART0
+                0x000045e8                SendByteToUART0
+                0x000041cc                Uart0IrqHandler
+                0x000045c8                IsUART0Empty
+                0x00004648                GetByteFromUART0
+                0x00004698                GetBufferFromUART0
+                0x0000466c                GetByteFromUART0NoWait
+                0x00004610                SendBufferToUART0
+                0x00004250                GetByteFromUART0Intr
+ .text          0x00004734      0x114 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_udivsi3.o)
+                0x00004734                __udivsi3
+                0x00004734                __aeabi_uidiv
+                0x00004830                __aeabi_uidivmod
+ .text          0x00004848      0x144 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_divsi3.o)
+                0x00004848                __aeabi_idiv
+                0x00004848                __divsi3
+                0x00004974                __aeabi_idivmod
+ .text          0x0000498c        0x4 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_dvmd_tls.o)
+                0x0000498c                __aeabi_ldiv0
+                0x0000498c                __div0
+                0x0000498c                __aeabi_idiv0
+ .text          0x00004990      0x430 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubdf3.o)
+                0x00004d54                __floatdidf
+                0x00004cd4                __floatsidf
+                0x00004cac                __aeabi_ui2d
+                0x00004990                __aeabi_drsub
+                0x00004d00                __extendsfdf2
+                0x0000499c                __adddf3
+                0x00004cac                __floatunsidf
+                0x0000499c                __aeabi_dadd
+                0x00004d40                __aeabi_ul2d
+                0x00004998                __aeabi_dsub
+                0x00004d40                __floatundidf
+                0x00004cd4                __aeabi_i2d
+                0x00004d54                __aeabi_l2d
+                0x00004d00                __aeabi_f2d
+                0x00004998                __subdf3
+ .text          0x00004dc0      0x49c c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivdf3.o)
+                0x00005050                __aeabi_ddiv
+                0x00004dc0                __aeabi_dmul
+                0x00005050                __divdf3
+                0x00004dc0                __muldf3
+ .text          0x0000525c       0xa0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_truncdfsf2.o)
+                0x0000525c                __aeabi_d2f
+                0x0000525c                __truncdfsf2
+ .text          0x000052fc      0x2ac c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubsf3.o)
+                0x00005308                __aeabi_fadd
+                0x00005304                __subsf3
+                0x000054cc                __aeabi_i2f
+                0x00005304                __aeabi_fsub
+                0x000054fc                __floatdisf
+                0x000054cc                __floatsisf
+                0x000054ec                __floatundisf
+                0x000054c4                __aeabi_ui2f
+                0x000054fc                __aeabi_l2f
+                0x000054ec                __aeabi_ul2f
+                0x000052fc                __aeabi_frsub
+                0x000054c4                __floatunsisf
+                0x00005308                __addsf3
+ .text          0x000055a8      0x2f8 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivsf3.o)
+                0x00005740                __divsf3
+                0x00005740                __aeabi_fdiv
+                0x000055a8                __mulsf3
+                0x000055a8                __aeabi_fmul
+ .text          0x000058a0       0x54 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_fixunssfsi.o)
+                0x000058a0                __aeabi_f2uiz
+                0x000058a0                __fixunssfsi
  *(.rodata)
- .rodata        0x00005600     0x3474 ./form_recognition_and_print.o
-                0x00005a4c                bitmap
-                0x00005600                pattern
- .rodata        0x00008a74        0x8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(i2c.o)
+ .rodata        0x000058f4     0x3474 ./form_recognition_and_print.o
+                0x00005d40                bitmap
+                0x000058f4                pattern
+ .rodata        0x00008d68        0x8 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(i2c.o)
  *(.rodata*)
  *(.glue_7)
- .glue_7        0x00008a7c        0x0 ./form_recognition_and_print.o
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\boot.o
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(init.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(i2c.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(cam_pobeye2.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(visio.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
- .glue_7        0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
- .glue_7        0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_udivsi3.o)
- .glue_7        0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_divsi3.o)
- .glue_7        0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_dvmd_tls.o)
- .glue_7        0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubdf3.o)
- .glue_7        0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivdf3.o)
- .glue_7        0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_truncdfsf2.o)
- .glue_7        0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubsf3.o)
- .glue_7        0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivsf3.o)
- .glue_7        0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_fixunssfsi.o)
+ .glue_7        0x00008d70        0x0 ./form_recognition_and_print.o
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\boot.o
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(init.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(i2c.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(cam_pobeye2.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(visio.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
+ .glue_7        0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
+ .glue_7        0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_udivsi3.o)
+ .glue_7        0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_divsi3.o)
+ .glue_7        0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_dvmd_tls.o)
+ .glue_7        0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubdf3.o)
+ .glue_7        0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivdf3.o)
+ .glue_7        0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_truncdfsf2.o)
+ .glue_7        0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubsf3.o)
+ .glue_7        0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivsf3.o)
+ .glue_7        0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_fixunssfsi.o)
  *(.glue_7t)
- .glue_7t       0x00008a7c        0x0 ./form_recognition_and_print.o
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\boot.o
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(init.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(i2c.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(cam_pobeye2.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(visio.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
- .glue_7t       0x00008a7c        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
- .glue_7t       0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_udivsi3.o)
- .glue_7t       0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_divsi3.o)
- .glue_7t       0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_dvmd_tls.o)
- .glue_7t       0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubdf3.o)
- .glue_7t       0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivdf3.o)
- .glue_7t       0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_truncdfsf2.o)
- .glue_7t       0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubsf3.o)
- .glue_7t       0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivsf3.o)
- .glue_7t       0x00008a7c        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_fixunssfsi.o)
+ .glue_7t       0x00008d70        0x0 ./form_recognition_and_print.o
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\boot.o
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(init.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(i2c.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(cam_pobeye2.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(visio.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
+ .glue_7t       0x00008d70        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
+ .glue_7t       0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_udivsi3.o)
+ .glue_7t       0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_divsi3.o)
+ .glue_7t       0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_dvmd_tls.o)
+ .glue_7t       0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubdf3.o)
+ .glue_7t       0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivdf3.o)
+ .glue_7t       0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_truncdfsf2.o)
+ .glue_7t       0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubsf3.o)
+ .glue_7t       0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivsf3.o)
+ .glue_7t       0x00008d70        0x0 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_fixunssfsi.o)
 
 .vfp11_veneer   0x00000000        0x0
  .vfp11_veneer  0x00000000        0x0 ./form_recognition_and_print.o
@@ -386,6 +403,7 @@ prog            0x00000048     0x8a34
  .vfp11_veneer  0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
  .vfp11_veneer  0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
  .vfp11_veneer  0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
+ .vfp11_veneer  0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
  .vfp11_veneer  0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
  .vfp11_veneer  0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
  .vfp11_veneer  0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
@@ -411,6 +429,7 @@ prog            0x00000048     0x8a34
  .v4_bx         0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
  .v4_bx         0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
  .v4_bx         0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
+ .v4_bx         0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
  .v4_bx         0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
  .v4_bx         0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
  .v4_bx         0x00000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
@@ -430,9 +449,9 @@ prog            0x00000048     0x8a34
  *(.eh_frame)
                 0x00000000                __end_of_text__ = .
 
-.data           0x40000000        0x0 load address 0x00008a7c
+.data           0x40000000        0x0 load address 0x00008d70
                 0x40000000                __data_beg__ = .
-                0x00008a7c                __data_beg_src__ = __end_of_text__
+                0x00008d70                __data_beg_src__ = __end_of_text__
  *(.data)
  .data          0x40000000        0x0 ./form_recognition_and_print.o
  .data          0x40000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\boot.o
@@ -443,6 +462,7 @@ prog            0x00000048     0x8a34
  .data          0x40000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
  .data          0x40000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
  .data          0x40000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
+ .data          0x40000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
  .data          0x40000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
  .data          0x40000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
  .data          0x40000000        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
@@ -471,6 +491,7 @@ prog            0x00000048     0x8a34
  .bss           0x40004b00        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
  .bss           0x40004b00        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
  .bss           0x40004b00        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
+ .bss           0x40004b00        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
  .bss           0x40004b00        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
  .bss           0x40004b00        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
  .bss           0x40004b00        0x0 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
@@ -506,7 +527,7 @@ prog            0x00000048     0x8a34
                 0x40006c00                PROVIDE (end, .)
 OUTPUT(./form_recongition_and_print.elf elf32-littlearm)
 
-.comment        0x00000000       0xea
+.comment        0x00000000       0xfc
  .comment       0x00000000       0x12 ./form_recognition_and_print.o
  .comment       0x00000012       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(init.o)
  .comment       0x00000024       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(i2c.o)
@@ -515,11 +536,12 @@ OUTPUT(./form_recongition_and_print.elf elf32-littlearm)
  .comment       0x0000005a       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(pob-proto.o)
  .comment       0x0000006c       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(graph.o)
  .comment       0x0000007e       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
- .comment       0x00000090       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
- .comment       0x000000a2       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
- .comment       0x000000b4       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
- .comment       0x000000c6       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
- .comment       0x000000d8       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
+ .comment       0x00000090       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
+ .comment       0x000000a2       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
+ .comment       0x000000b4       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
+ .comment       0x000000c6       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
+ .comment       0x000000d8       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
+ .comment       0x000000ea       0x12 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
 
 .ARM.attributes
                 0x00000000       0x10
@@ -542,33 +564,35 @@ OUTPUT(./form_recongition_and_print.elf elf32-littlearm)
  .ARM.attributes
                 0x00000080       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(lcd.o)
  .ARM.attributes
-                0x00000090       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
+                0x00000090       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(dual-pob.o)
  .ARM.attributes
-                0x000000a0       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
+                0x000000a0       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(utils.o)
  .ARM.attributes
-                0x000000b0       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
+                0x000000b0       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(io-bus.o)
  .ARM.attributes
-                0x000000c0       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
+                0x000000c0       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(timer.o)
  .ARM.attributes
-                0x000000d0       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
+                0x000000d0       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(interrupt.o)
  .ARM.attributes
-                0x000000e0       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_udivsi3.o)
+                0x000000e0       0x10 C:/Program Files (x86)/POB-Technology/POBTOOLS4/sdk/pobeye2\libpob2.a(uart0.o)
  .ARM.attributes
-                0x000000f0       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_divsi3.o)
+                0x000000f0       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_udivsi3.o)
  .ARM.attributes
-                0x00000100       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_dvmd_tls.o)
+                0x00000100       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_divsi3.o)
  .ARM.attributes
-                0x00000110       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubdf3.o)
+                0x00000110       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000120       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivdf3.o)
+                0x00000120       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000130       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_truncdfsf2.o)
+                0x00000130       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x00000140       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubsf3.o)
+                0x00000140       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x00000150       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivsf3.o)
+                0x00000150       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_addsubsf3.o)
  .ARM.attributes
-                0x00000160       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_fixunssfsi.o)
+                0x00000160       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_muldivsf3.o)
+ .ARM.attributes
+                0x00000170       0x10 c:/program files (x86)/yagarto/bin/../lib/gcc/arm-elf/4.4.1/interwork\libgcc.a(_arm_fixunssfsi.o)
 
 .debug_frame
 

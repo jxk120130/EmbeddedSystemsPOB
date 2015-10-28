@@ -77,7 +77,7 @@ int main (void)
 
 	
 		// Parse the list of the form and print result on the Pob-Terminal and the LCD Screen
-		for (i=0;i<Nb_Identify;i++)
+		for (i=0; i < Nb_Identify; i++)
 		{
 			switch (ListOfForm[i].id)
 			{
@@ -85,7 +85,8 @@ int main (void)
 					// Draw bitmap on the buffer and the LCD screen
 					DrawBitmap(0,0,IDB_KING,bitmap,&ScreenBuffer);
 					DrawLCD(&ScreenBuffer);
-					MoveBot(RUN);
+					//MoveBot(RUN);
+					SetDCMotor(DC_MOTOR_RUN);
 					// Nb_Last = RUN;
 				break;
 
@@ -118,7 +119,7 @@ int main (void)
 		{
 			DrawBitmap(0,0,IDB_NOFORMS,bitmap,&ScreenBuffer);
 			DrawLCD(&ScreenBuffer);
-			MoveBot(Nb_Last);
+			// MoveBot(Nb_Last);
 		}
 	}
 
